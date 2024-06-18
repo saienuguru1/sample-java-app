@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-automated-deployments
+  labels:
+    app: demo-automated-deployments
+    kubernetes.azure.com/generator: devhub
+  namespace: namespace-workflow-1718739513535
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-automated-deployments
+  template:
+    metadata:
+      labels:
+        app: demo-automated-deployments
+    spec:
+      containers:
+        - name: demo-automated-deployments
+          image: acrworkflow1718739513535.azurecr.io/image-workflow-1718739513535:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
