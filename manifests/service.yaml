@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-automated-deployments
+  namespace: namespace-workflow-1718739513535
+  labels:
+    kubernetes.azure.com/generator: devhub
+spec:
+  type: LoadBalancer
+  selector:
+    app: demo-automated-deployments
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
